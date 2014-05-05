@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\title{Visualizing the TDD Cycle}
+\author{Michael Hilton \and Caius Brindescu \and Mihai Codoban}
+
+\begin{document}
+
+\maketitle
+
+\section{Software Artifact}
+
+We plan to use data that we have collected from software being developed in order to visualize the software development process.  
+
+\section{Why is this important?}
+Test Driven Development (TDD) is a well defined software development process which consists of writing tests, writing code, and then refactoring.
+While this process is fairly clear, there is no way to compare the theoretical process to how any develop actually is performing TDD.   
+
+We would like to study how TDD is actually implemented in practice.
+The first step to be able to perform this research is to record and analyze the process as it happens.
+We have begun to develop the software to record this process, and have found that this software produces a very large quantity of data.
+We want to develop visualizations to enable us to make more sense of this large volume of data.  
+
+Without this research, developers can’t record and analyze themselves as they practice TDD.
+Managers do not know if their employees are following TDD closely or at all.
+Researchers do not have the required data to begin analyzing the practice of TDD.
+
+\section{Target Audience}
+
+The target audience for this visualization is anyone who wants to know about how the software development process happened.
+We anticipate this would mostly be developers analyzing their own development cycle, researchers analyzing development cycles, and managers analyzing the development cycle of those that they are managing.  
+
+\section{Questions that our audience might ask from the data}
+
+\begin{itemize}
+\item Developers
+\begin{enumerate}
+\item Is my TDD workflow consistent?
+\item What does my TDD workflow look like?
+\item How does my TDD workflow compare to others’?
+\item Is my TDD workflow considered healthy?
+\item Is my TDD workflow improving or worsening?
+\end{enumerate}
+
+\item Researchers
+\begin{enumerate}
+\item How does a practical TDD workflow look like?
+\item How does practical TDD differ from theoretical TDD?
+\item Are there correlations between TDD workflow characteristics and other software development phenomena?
+\end{enumerate}
+
+\item Managers
+\begin{enumerate}
+\item How is TDD affecting the project?
+\item Who are the best TDD performers?
+\item How consistent are my developers in using TDD?
+\end{enumerate}
+\end{itemize}
+
+\section{The Data}
+
+The data consists of a stream of development events recorded in an IDE:
+\begin{itemize}
+\item Text edits (each key stroke with origin (user, paste, undo, redo) )
+\item Copy
+\item Refactorings invoked 
+\item Program runs
+\item Test runs
+\item Resource change events (add, delete, save, refresh)
+\end{itemize}
+
+The event stream is persisted in JSON.
+Using this data we can infer high level TDD phases such as when the developer was writing tests, writing code to make the tests pass or when refactoring.
+
+\section{How will we get the data?}
+
+We have this data as part of the research we are doing.
+We plan on eventually using automated data mining for this project, but we might need to mark up the data by hand for this class.  
+
+\section{Initial design Thoughts}
+
+We plan to have 3 visualizations depending on the scope of change:
+\begin{itemize}
+\item TDD flow visualization: the user can observe the sequence of TDD phases
+\item TDD phase visualization: the user can observe a single TDD phase in detail
+\item Code skimming: the user can observe code changes pertaining to different aspects of a TDD phase (code edits in tests, code edits in refactorings, etc)
+\end{itemize}
+
+\end{document}
