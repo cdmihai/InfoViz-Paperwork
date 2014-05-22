@@ -285,7 +285,7 @@ Refactoring type & Nominal & Refactorings done \\
 
 Data is gathered by a plugin that is installed by the user in her IDE. The plugin records all the events from the event table and sends them to a server.
 
-\section{Encodings}
+\section{Design}
 
 \subsection{Overview}
 
@@ -313,10 +313,10 @@ The mapping from the granular code changes to TDD stages is present via the top 
 
 In the middle there are three editors that show the code changes between two arbitrary text events in the TDD Atomic Chart. The first two editors show the first and the last variant of the code while the third editor shows the diff between the two: green highlights for added text and red highlights for deleted text.
 
-\section{TDD Atomic Chart}
+\subsection{TDD Atomic Chart}
 \label{sec:atomic}
 
-\subsection{Justification}
+\subsubsection{Justification}
 
 This visualization allows the developer to navigate through the code events.
 Each coding event is abstracted away via a rectangle. Moreover, the events are grouped by the files in which they are performed. The event rectangles are sorted via their timestamps. Temporal data abstraction and data clustering techniques from \cite{one} inspired this visualization: complex coding events are abstracted via rectangles and event types are clustered: event types are encoded via square color. A similar visualization is the Cluster Calendar View presented in \cite{one}.
@@ -325,16 +325,18 @@ The temporal succession of rectangles also provides the affordance of time flow.
 However, one key difference from a sound editor is that while the sound editor shows continuous data, we show cycle snapshots, so our visualization resembles more closely small multiples.
 Lastly, the temporal succession is not relative to real time but relative to event ordering. Thus we obtain an ordering similar to lamport timestamps.
 
+\subsubsection{Encoding}
+
 Encoding (using Mackinlay's Ranking):
 \begin{enumerate}
 	\item Temporal succession of coding events (qualitative): position
 	\item Event type (qualitative): color
 \end{enumerate}
 
-\section{TDD Spectrum Chart}
+\subsection{TDD Spectrum Chart}
 \label{sec:spectrum}
 
-\subsection{Justification}
+\subsubsection{Justification}
 
 The visualization in Figure~\ref{fig:two} enables developers, managers and researchers to answer many of their questions. It shows the succession of TDD stages in time and provides an intermediary mapping between high level TDD cycles and low level text events. 
 
@@ -348,6 +350,8 @@ Since the Spectrum chart is both close to and aligned with the Atomic chart, the
 	\label{fig:two}
 \end{figure*}
 
+\subsubsection{Encoding}
+
 We ordered our encodings using Mackinlay's ranking.
 
 Since the TDD cycle is defined by a temporal repetition of stages, the sequence of stages (categorical data) is encoded via position on the horizontal axis.
@@ -355,10 +359,10 @@ By doing so we also ensure a common axis with the Atomic chart.
 
 The TDD stage type (categorical) is encoded via color: red for tests, green for development and blue for refactoring (colors are established by TDD literature). We chose color since position was taken by encoding temporal succession.
 
-\section{TDD Pulse Chart}
+\subsection{TDD Pulse Chart}
 \label{sec:pulse}
 
-\subsection{Justification}
+\subsubsection{Justification}
 
 The purpose of this visualization is to represent an entire TDD cycle by just one shape. 
 See figure~\ref{fig:three}
@@ -378,17 +382,21 @@ Instead of using straight lines to connect the radar chart points, we use curved
 As with the timeseries chart, the sequence of TDD eggs are encoded via position, due to the temporal cyclic property of TDD cycles. We thus obtain small multiples snapshots of how the TDD cycle progresses in time.
 TDD cycle metrics are encoded via the next available encoding, length (the radar chart axis).
 
+With this information the users can answer questions about what part of the TDD cycle they spend the most time on and how big their cycles are. They can also analyze how their cycles vary over time and whether any patterns occur.
+
+Moreover, users can compare the TDD cycles for several users by showing several TDD time series side by side. This allows comparison of how much time different developers spend in stages, how big their stages are and whether they follow TDD at all.
+
+\subsubsection{Encoding}
+
 Encoding (using Mackinlay's Ranking):
 \begin{enumerate}
 	\item Succession of TDD stages (quantitative): position
 	\item TDD stage size metrics (quantitative): length
 \end{enumerate}
 
-With this information the users can answer questions about what part of the TDD cycle they spend the most time on and how big their cycles are. They can also analyze how their cycles vary over time and whether any patterns occur.
 
-Moreover, users can compare the TDD cycles for several users by showing several TDD time series side by side. This allows comparison of how much time different developers spend in stages, how big their stages are and whether they follow TDD at all.
 
-\section{Interactions}
+\subsection{Interactions}
 
 According to \cite{two}, visualization platforms do not only need to provide visualizations for several levels of abstraction but the different levels need to be in sync as well.
 A selection in a particular visualization needs to propagate to the other visualizations as well.
