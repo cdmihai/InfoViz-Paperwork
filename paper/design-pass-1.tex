@@ -137,7 +137,7 @@
 Software processes have had little or no visualization aids.
 Without this kind of information, it is hard to grasp whether these processes are followed correctly. It is hard to find anomalies, and identify potential areas for improvement. Without visualizations that show the big picture, one has to go through tedious, time consuming and incomplete data to learn how a processes was actually implemented. One has to go through reports, interviews and mine software artefacts in order to gain a big picture understanding on how a particular team implemented a software process.
 
-We intend to build visualizations that aid in analyzing developers’ TDD practice. Such visualizations would visually expose, for each developer, the main stages of the practice and how they evolve over time.
+We intend to build visualizations that aid in analyzing developers' TDD practice. Such visualizations would visually expose, for each developer, the main stages of the practice and how they evolve over time.
 
 This kind of information benefits developers, managers and researchers. Developers can better improve their practice by analyzing their past behaviour. Managers can get a sense of magnitude of how well TDD is implemented in the team. Researchers can gain insights and better describe the theoretical foundations of TDD by finding patterns and exploring the divide between practical and theoretical TDD.
 
@@ -149,13 +149,13 @@ Developers who want to analyze their own TDD cycle can use this visualization to
 
 Researchers analyzing the practice of TDD can use this to look for patterns in how TDD is actually used.  Without this visualization, the data would be a series of JSON files that would be almost impossible to get meaning from just by looking at them.  
 
-Finally, managers analyzing the performance of those that they are managing can use this visualization to have an accurate picture of their team’s performance.
+Finally, managers analyzing the performance of those that they are managing can use this visualization to have an accurate picture of their team's performance.
 
 \section{High level domain question/questions of interest}
 
 \textbf{Developers:} \\
 Q1: What does my TDD workflow look like? \\
-Q2: How does my TDD workflow compare to others’? \\
+Q2: How does my TDD workflow compare to others'? \\
 Q3: How does my TDD workflow change over time? \\
 
 \textbf{Managers:} \\
@@ -177,7 +177,7 @@ Q1: What does my TDD workflow look like?
 	\item What code did I write for a specific TDD stage?
 \end{itemize}
 
-Q2: How does my TDD workflow compare to others’?
+Q2: How does my TDD workflow compare to others'?
 \begin{itemize}
 	\item How does the time I spend in each TDD cycle compare to others?
 	\item How does the code I write in each TDD cycle compare to others?
@@ -291,11 +291,11 @@ For this design iteration we only focus on the single developer scenario. Thus w
 
 Our single user solution proposes the visualization of data at several abstraction levels, as \cite{two} suggests. Thus users have three scopes at which they can analyze their TDD practice, varying from concrete to abstract:
 
-\textbf{Text change level.} The user can browse through individual text changes to see how they relate to TDD stages. We call this visualization the “TDD Atomic Chart”
+\textbf{Text change level.} The user can browse through individual text changes to see how they relate to TDD stages. We call this visualization the ``TDD Atomic Chart''
 
-\textbf{TDD cycle stage level.} The user can browse through the stages of their TDD cycles. We call this visualization the “TDD Spectrum Chart” and is inspired by \cite{one}.
+\textbf{TDD cycle stage level.} The user can browse through the stages of their TDD cycles. We call this visualization the ``TDD Spectrum Chart'' and is inspired by \cite{one}.
 
-\textbf{TDD cycle level.} The user can browse through high level TDD cycles. We call this visualization the “TDD Sun Chart” and is reminiscent of radar charts.
+\textbf{TDD cycle level.} The user can browse through high level TDD cycles. We call this visualization the ``TDD Sun Chart'' and is reminiscent of radar charts.
 
 Figure~\ref{fig:one} shows a sketch of the single developer TDD workbench.
 The top bar contains the high level, abstract visualizations of the TDD cycles. The upper part represents the TDD Spectrum Chart while the bottom part represents the TDD Sun Chart. 
@@ -320,10 +320,11 @@ Each coding event is abstracted away via a rectangle. Moreover, the events are g
 The temporal succession of rectangles also provides the affordance of time flow. It resembles soundwave amplitude visualization from sound editors and music players.
 However, one key difference from a sound editor is that while the sound editor shows continuous data, we show cycle snapshots, so our visualization resembles more closely small multiples.
 
-Since developers’ main concern with the tool is the study of TDD, we provide a mapping to TDD cycles at text change level as well thus presenting TDD relevant data at various abstraction levels. Since TDD stages are aligned with coding events, the users would tend to instinctively visually group code changes by TDD stage (gestalt principle: instinctively continuing an interrupted interval).
+Since developers' main concern with the tool is the study of TDD, we provide a mapping to TDD cycles at text change level as well thus presenting TDD relevant data at various abstraction levels. 
+Since TDD stages are aligned with coding events, the users would tend to instinctively visually group code changes by TDD stage (gestalt principle: instinctively continuing an interrupted interval).
 The TDD stages are differentiated by their color. TDD literature uses red, green and blue to differentiate various stages.
 
-Encoding (using Mackinlay’s Ranking):
+Encoding (using Mackinlay's Ranking):
 \begin{enumerate}
 	\item Temporal succession of coding events (qualitative): position
 	\item Temporal succession of TDD stages (qualitative): position. Since coding events and TDD stages are on separate axis, both can use the position encoding.
@@ -343,7 +344,7 @@ The visualization in Figure~\ref{fig:two} enables developers, managers and resea
 	\label{fig:two}
 \end{figure*}
 
-We ordered our encodings using Mackinlay’s ranking.
+We ordered our encodings using Mackinlay's ranking.
 Since the TDD cycle is defined by a temporal repetition of stages, the sequence of stages (categorical data) is encoded via position on the Ox axis.
 TDD stage size metrics are encoded using the rectangle width (time) and height (amount of code). Position being taken, they take the second encoding for quantitative data, length.
 The TDD stage type (categorical) is encoded via color: red for tests, green for development and blue for refactoring. Color occupies the second ranking for categorical data.
