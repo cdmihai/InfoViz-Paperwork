@@ -295,12 +295,12 @@ Our single user solution proposes the visualization of data at several abstracti
 
 \textbf{Text change level.} The user can browse through individual text changes to see how they relate to TDD stages. We call this visualization the ``TDD Atomic Chart''
 
-\textbf{TDD cycle stage level.} The user can browse through the stages of their TDD cycles. We call this visualization the ``TDD Spectrum Chart'' and is inspired by \cite{one}.
+\textbf{TDD stage level.} The user can browse through the stages of their TDD cycles. We call this visualization the ``TDD Spectrum Chart'' and is inspired by \cite{one}.
 
-\textbf{TDD cycle level.} The user can browse through high level TDD cycles. We call this visualization the ``TDD Sun Chart'' and is reminiscent of radar charts.
+\textbf{TDD cycle level.} The user can browse through high level TDD cycles. We call this visualization the ``TDD Pulse Chart'' and was derived from a area hive plot \cite{four}. 
 
 Figure~\ref{fig:one} shows a sketch of the single developer TDD workbench.
-The top bar contains the high level, abstract visualizations of the TDD cycles. The upper part represents the TDD Spectrum Chart while the bottom part represents the TDD Sun Chart. 
+The top bar contains the high level, abstract visualization of TDD cycles via the TDD Pulse Chart. 
 
 \begin{figure*}[hbt]
 	\includegraphics[width=\textwidth]{fig1}
@@ -308,9 +308,10 @@ The top bar contains the high level, abstract visualizations of the TDD cycles. 
 \label{fig:one}
 \end{figure*}
 
-The bottom bar shows the TDD Atomic chart. It is mainly a change navigation tool that users use to browse through granular code changes. The mapping from code changes to TDD stages is present via the top band.
+The bottom bar shows the granular code changes via the TDD Atomic chart. It is also a navigational tool that users use to browse through events and view code diffs.
+The mapping from the granular code changes to TDD stages is present via the top band which constitutes the TDD Spectrum chart.
 
-In the middle there are three editors that show the code changes between two arbitrary points in the TDD Atomic Chart. The first two editors show the first and the last variant of the code while the third shows the diff between the two: green highlights for added text and red highlight for deleted text.
+In the middle there are three editors that show the code changes between two arbitrary text events in the TDD Atomic Chart. The first two editors show the first and the last variant of the code while the third editor shows the diff between the two: green highlights for added text and red highlights for deleted text.
 
 \section{TDD Atomic Chart}
 \label{sec:atomic}
@@ -320,19 +321,14 @@ In the middle there are three editors that show the code changes between two arb
 This visualization allows the developer to navigate through the code events.
 Each coding event is abstracted away via a rectangle. Moreover, the events are grouped by the files in which they are performed. The event rectangles are sorted via their timestamps. Temporal data abstraction and data clustering techniques from \cite{one} inspired this visualization: complex coding events are abstracted via rectangles and event types are clustered: event types are encoded via square color. A similar visualization is the Cluster Calendar View presented in \cite{one}.
 
-The temporal succession of rectangles also provides the affordance of time flow. It resembles soundwave amplitude visualization from sound editors and music players.
+The temporal succession of rectangles also provides the affordance of time flow. It resembles soundwave amplitude visualizations from sound editors and music players.
 However, one key difference from a sound editor is that while the sound editor shows continuous data, we show cycle snapshots, so our visualization resembles more closely small multiples.
-
-Since developers' main concern with the tool is the study of TDD, we provide a mapping to TDD cycles at text change level as well thus presenting TDD relevant data at various abstraction levels. 
-Since TDD stages are aligned with coding events, the users would tend to instinctively visually group code changes by TDD stage (gestalt principle: instinctively continuing an interrupted interval).
-The TDD stages are differentiated by their color. TDD literature uses red, green and blue to differentiate various stages.
+Lastly, the temporal succession is not relative to real time but relative to event ordering. Thus we obtain an ordering similar to lamport timestamps.
 
 Encoding (using Mackinlay's Ranking):
 \begin{enumerate}
 	\item Temporal succession of coding events (qualitative): position
-	\item Temporal succession of TDD stages (qualitative): position. Since coding events and TDD stages are on separate axis, both can use the position encoding.
 	\item Event type (qualitative): color
-	\item TDD stage (qualitative): color. Since coding events and TDD stages are on separate axis, both can use the position encoding.
 \end{enumerate}
 
 \section{TDD Spectrum Chart}
@@ -340,7 +336,11 @@ Encoding (using Mackinlay's Ranking):
 
 \subsection{Justification}
 
-The visualization in Figure~\ref{fig:two} enables developers, managers and researchers to answer many of their questions. It shows the succession of TDD cycle stages in time. Each TDD stage appears as a rectangle. We chose rectangles because we can encode two TDD metrics with it: cycle code change size and cycle duration.
+The visualization in Figure~\ref{fig:two} enables developers, managers and researchers to answer many of their questions. It shows the succession of TDD stages in time and provides an intermediary mapping between high level TDD cycles and low level text events. 
+
+Since users' main concern is the study of TDD, we chose to integrate this chart on top of the Atomic Chart.
+This integration provides both a tight mapping to granular events and an intermediary transition to the high level Pulse chart as well.
+Since the Spectrum chart is both close to and aligned with the Atomic chart, the users would tend to instinctively visually group code changes by TDD stage (gestalt principle: instinctively continuing an interrupted interval).
 
 \begin{figure*}
 	\includegraphics[width=\textwidth]{fig2.png}
@@ -349,15 +349,13 @@ The visualization in Figure~\ref{fig:two} enables developers, managers and resea
 \end{figure*}
 
 We ordered our encodings using Mackinlay's ranking.
+
 Since the TDD cycle is defined by a temporal repetition of stages, the sequence of stages (categorical data) is encoded via position on the Ox axis.
-TDD stage size metrics are encoded using the rectangle width (time) and height (amount of code). Position being taken, they take the second encoding for quantitative data, length.
-The TDD stage type (categorical) is encoded via color: red for tests, green for development and blue for refactoring. Color occupies the second ranking for categorical data.
+By doing so we also ensure a common axis with the Atomic chart.
 
-With this information the users can answer questions about what part of the TDD cycle they spend the most time on and how big their cycles are. They can also analyze how their cycles vary over time and whether any patterns occur.
+The TDD stage type (categorical) is encoded via color: red for tests, green for development and blue for refactoring (colors are established by TDD literature). We chose color since position was taken by encoding temporal succession.
 
-Moreover, users can compare the TDD cycles for several users by showing several TDD time series side by side. This allows comparison of how much time different developers spend in stages, how big their stages are and whether they follow TDD at all.
-
-\section{TDD Sun Chart}
+\section{TDD Pulse Chart}
 \label{sec:pulse}
 
 \subsection{Justification}
@@ -369,7 +367,7 @@ By doing so, users obtain a singular mental image of an entire TDD cycle.
 
 \begin{figure*}
 	\includegraphics[width=\textwidth]{fig3.png}
-	\caption{TDD Sun Chart}
+	\caption{TDD Pulse Chart}
 	\label{fig:three}
 \end{figure*}
 
@@ -385,6 +383,10 @@ Encoding (using Mackinlay's Ranking):
 	\item Succession of TDD stages (quantitative): position
 	\item TDD stage size metrics (quantitative): length
 \end{enumerate}
+
+With this information the users can answer questions about what part of the TDD cycle they spend the most time on and how big their cycles are. They can also analyze how their cycles vary over time and whether any patterns occur.
+
+Moreover, users can compare the TDD cycles for several users by showing several TDD time series side by side. This allows comparison of how much time different developers spend in stages, how big their stages are and whether they follow TDD at all.
 
 \section{Interactions}
 
