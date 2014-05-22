@@ -261,6 +261,7 @@ Compute TDD cycles: starting from low level text edits, cluster the edits accord
 \textbf{RQ2c:} Compute TDD cycles. Retrieve cycles for all developers. Retrieve ideal TDD cycles. Retrieve cycle sizes. Compare with ideal TDD. \\
 
 \section{Data type abstractions}
+\label{sec:data}
 
 \begin{table}[hbt]
 \begin{tabular}{l l l}
@@ -312,6 +313,7 @@ The bottom bar shows the TDD Atomic chart. It is mainly a change navigation tool
 In the middle there are three editors that show the code changes between two arbitrary points in the TDD Atomic Chart. The first two editors show the first and the last variant of the code while the third shows the diff between the two: green highlights for added text and red highlight for deleted text.
 
 \section{TDD Atomic Chart}
+\label{sec:atomic}
 
 \subsection{Justification}
 
@@ -334,6 +336,7 @@ Encoding (using Mackinlay's Ranking):
 \end{enumerate}
 
 \section{TDD Spectrum Chart}
+\label{sec:spectrum}
 
 \subsection{Justification}
 
@@ -355,6 +358,7 @@ With this information the users can answer questions about what part of the TDD 
 Moreover, users can compare the TDD cycles for several users by showing several TDD time series side by side. This allows comparison of how much time different developers spend in stages, how big their stages are and whether they follow TDD at all.
 
 \section{TDD Sun Chart}
+\label{sec:pulse}
 
 \subsection{Justification}
 
@@ -398,6 +402,26 @@ Our tool is written in javascript.
 Its implementation relies on various libraries.
 The Pulse Chart is implemented in D3 \cite{three} and based on a Hive Chart \cite{four}.
 We used the JSDiff library \cite{five} for diffing the code between different text events.
+
+\begin{figure*}[H]
+	\includegraphics[width=\columnwidth]{implementation}
+	\caption{TDD Viewer Pipeline}
+	\label{fig:tool_pipeline}
+\end{figure*}
+
+The overall pipeline data flow of our tool is depicted in figure \ref{fig:tool_pipeline}.
+
+The input is a JSON file representing all the recorded fine grained events (see section \ref{sec:data} for event contents).
+The fine grained events are graphically represented by the Atomic Chart (section \ref{sec:atomic}).
+
+TDD stages are inferred from the recorded events.
+Red, Green and Blue stages contain events recorded while writing the tests, making the tests pass and performing refactorings, respectively.
+TDD stages are graphically represented via the Spectrum Chart (section \ref{sec:spectrum}).
+
+The TDD pulse is inferred from the stream of TDD stages and the succession of pulses represents the practice of TDD.
+A pulse contains a succession of red, green and blue stages.
+While the red and green stages are mandatory, the blue stage is optional.
+The TDD pulse is graphically represented by the Pulse Chart(section \ref{sec:pulse}).
 
 \section{Example scenario}
 \subsection{Insights}
