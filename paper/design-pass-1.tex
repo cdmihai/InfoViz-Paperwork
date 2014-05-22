@@ -327,11 +327,17 @@ Lastly, the temporal succession is not relative to real time but relative to eve
 
 \subsubsection{Encoding}
 
-Encoding (using Mackinlay's Ranking):
-\begin{enumerate}
-	\item Temporal succession of coding events (qualitative): position
-	\item Event type (qualitative): color
-\end{enumerate}
+We used Mackinlay's Ranking to assign encodings based on information ordering by importance.
+
+The temporal succession of events (quantitative) is the most important invariant we wish to convey and thus we used position.
+Next, we want to convey the event types (quantitative), for which we use color.
+
+Events are grouped in several horizontal axis as following: 
+\begin{itemize}
+	\item The text events for each source file are shown in a separate axis.
+	\item Text events from all other files and test events from source files are shown together in a common axis.
+\end{itemize}
+This grouping allows users to browse the events for a particular file and it also allows them to quickly spot the test events (highly relevant to TDD).
 
 \subsection{TDD Spectrum Chart}
 \label{sec:spectrum}
