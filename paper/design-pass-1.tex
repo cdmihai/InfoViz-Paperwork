@@ -371,7 +371,7 @@ The TDD stage type (categorical) is encoded via color: red for tests, green for 
 \subsubsection{Justification}
 
 The purpose of this visualization is to represent an entire TDD cycle by just one shape. 
-See figure~\ref{fig:three}
+
 By doing so, users obtain a singular mental image of an entire TDD cycle.
 \cite{one} presents this technique as temporal data abstraction, in which complex, large temporal data is abstracted and mapped to qualitative entities, in our case, shape.
 
@@ -381,12 +381,9 @@ By doing so, users obtain a singular mental image of an entire TDD cycle.
 	\label{fig:three}
 \end{figure*}
 
-The visualization is based on a radar chart with three axis. The axis represent the size of each of three TDD cycle stages. These three axis generate the shape of a particular TDD cycle.
-
-Instead of using straight lines to connect the radar chart points, we use curved lines. Together they create a deformed circle. Thus the unique size characteristics of each TDD cycle are encoded into the deformation of the circle. We used a circle and not a square due to gestalt principles: the vertices of the square introduce discontinuity in perception, and biases the viewer to the number 4. A circle on the hand has no vertices (points of discontinuity) and therefore does not introduce deformation bias. Thus, we hypothesize that circles show deformation in a more unbiased way than squares.
-
-As with the timeseries chart, the sequence of TDD eggs are encoded via position, due to the temporal cyclic property of TDD cycles. We thus obtain small multiples snapshots of how the TDD cycle progresses in time.
-TDD cycle metrics are encoded via the next available encoding, length (the radar chart axis).
+The visualization (figure~\ref{fig:three}) has its inspiration in the stacked hive plot.
+Each TDD stage in the cycle is represented by a section of a disc.
+The radius of the disc encodes a certain metric pertaining to that stage.
 
 With this information the users can answer questions about what part of the TDD cycle they spend the most time on and how big their cycles are. They can also analyze how their cycles vary over time and whether any patterns occur.
 
@@ -394,13 +391,19 @@ Moreover, users can compare the TDD cycles for several users by showing several 
 
 \subsubsection{Encoding}
 
-Encoding (using Mackinlay's Ranking):
-\begin{enumerate}
-	\item Succession of TDD stages (quantitative): position
-	\item TDD stage size metrics (quantitative): length
-\end{enumerate}
+As with the timeseries chart, the sequence of TDD pulses are encoded via position, due to the temporal cyclic property of TDD cycles. We thus obtain small multiples snapshots of how the TDD cycle progresses in time.
+TDD cycle metrics are encoded via the next available encoding, length (the radar chart axis).
 
+%small and need to discern differences. The discs pop out, by growing in area
+Since TDD cycles repeat themselves, the pulse chart would contain a series of small charts, each depicting a TDD cycle.
+Therefore the main requirement that drove the design of this chart was the fact that it needed to be small and still intuitively convey information on the contents of a cycle.
+Because TDD stage metrics are encoded in the radius of each disc section, increasing the radius increases the area by a power of 2.
+Thus, small variations in metrics are visible to the user even if the chart is small.
+Lastly, by using area, the chart utilizes as much empty space as possible.
 
+%idea of a cycle
+Another benefit of the pulse chart is that it expresses the idea of a repetitive event, a cycle.
+This affords very well the nature of TDD cycles.
 
 \subsection{Interactions}
 
