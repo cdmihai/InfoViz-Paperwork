@@ -405,15 +405,20 @@ Lastly, by using area, the chart utilizes as much empty space as possible.
 Another benefit of the pulse chart is that it expresses the idea of a repetitive event, a cycle.
 This affords very well the nature of TDD cycles.
 
-\subsection{Interactions}
+\subsection{Bidirectional mappings}
 
 According to \cite{two}, visualization platforms do not only need to provide visualizations for several levels of abstraction but the different levels need to be in sync as well.
 A selection in a particular visualization needs to propagate to the other visualizations as well.
 Moreover, there must be visual cues that show the user's current focus.
 
 %pulse to cycles (background select, scroll in cycle, select cycles, fade?)
-
 %cycle to pulse (background select, scroll to pulse, select pulse, highlight cycle in pulse)
+Our tool provides bidirectional navigation between TDD cycles and stages.
+A selection of a TDD cycle in the Pulse chart causes an automatic selection of the corresponding stages in the Spectrum chart and a selection of a TDD stage in the Spectrum chart causes the automatic selection of its containing cycle in the Pulse chart.
+Both charts visually mark their selections to provide cues of the user's current focus.
+
+%events - stages is automatically done by gest
+The mapping between events in the Atomic chart and TDD stages in the Spectrum chart is intuitively achieved by the shared horizontal axis.
 
 \section{Implementation}
 
