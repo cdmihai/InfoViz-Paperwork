@@ -30,6 +30,7 @@
 \usepackage{graphicx}
 \usepackage{times}
 \usepackage{booktabs}
+\usepackage{float}
 
 %% We encourage the use of mathptmx for consistent usage of times font
 %% throughout the proceedings. However, if you encounter conflicts
@@ -427,11 +428,11 @@ Its implementation relies on various libraries.
 The Pulse Chart is implemented in D3 \cite{three} and based on a Hive Chart \cite{four}.
 We used the JSDiff library \cite{five} for diffing the code between different text events.
 
-\begin{figure*}[H]
+\begin{figure}[H]
 	\includegraphics[width=\columnwidth]{implementation}
 	\caption{TDD Viewer Pipeline}
 	\label{fig:tool_pipeline}
-\end{figure*}
+\end{figure}
 
 The overall pipeline data flow of our tool is depicted in figure \ref{fig:tool_pipeline}.
 
