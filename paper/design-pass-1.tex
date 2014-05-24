@@ -171,7 +171,8 @@ Q2: How does practical TDD differ from theoretical TDD? \\
 
 \section{Detailed questions that users may ask of the data}
 
-\textbf{Developers:} \\
+\textbf{Developers:}
+
 Q1: What does my TDD workflow look like? 
 \begin{itemize}
 	\item What part of the TDD cycle to I spend the most time in?
@@ -194,7 +195,8 @@ Q3: How does my TDD workflow change over time?
 	\item How does the amount of code I write in each TDD cycle change over time?
 \end{itemize}
 
-\noindent\textbf{Managers:} \\
+\noindent\textbf{Managers:} 
+
 Q1: How consistent are my developers in using TDD?
 \begin{itemize}
 	\item How much time does each developer spend in each TDD cycle?
@@ -212,6 +214,7 @@ Q2: Who are the best TDD performers?
 \end{itemize}
 	
 \noindent\textbf{Researchers:}
+
 Q1: What does a practical TDD workflow look like?
 \begin{itemize}
 	\item How much time do TDD developers spend in each TDD cycle?
@@ -341,6 +344,9 @@ Events are grouped in several horizontal axis as following:
 \end{itemize}
 This grouping allows users to browse the events for a particular file and it also allows them to quickly spot the test events (highly relevant to TDD).
 
+In order to alleviate the problem of having large amounts of data, we take advantage of the fact that text events come in bursts.
+Thus, we detect the intermediary text events from inside the bursts and display them in a shortened manner.
+
 \subsection{TDD Spectrum Chart}
 \label{sec:spectrum}
 
@@ -366,8 +372,6 @@ Since the TDD cycle is defined by a temporal repetition of stages, the sequence 
 By doing so we also ensure a common axis with the Atomic chart.
 
 The TDD stage type (categorical) is encoded via color: red for tests, green for development and blue for refactoring (colors are established by TDD literature). We chose color since position was taken by encoding temporal succession.
-
-
 
 Cycle membership (categorical) is encoded via shape: the beginning and ending stages of the same cycle have rounded corners.
 This makes the users intuitively split the stages by cycles since the rounded corners visually create partitions in the Spectrum chart.
@@ -413,7 +417,7 @@ Lastly, by using area, the chart utilizes as much empty space as possible.
 Another benefit of the pulse chart is that it expresses the idea of a repetitive event, a cycle.
 This affords very well the nature of TDD cycles.
 
-\subsection{Bidirectional mappings}
+\subsection{Bidirectional mappings and user focus}
 
 According to \cite{two}, visualization platforms do not only need to provide visualizations for several levels of abstraction but the different levels need to be in sync as well.
 A selection in a particular visualization needs to propagate to the other visualizations as well.
@@ -431,6 +435,7 @@ The selection in the Spectrum chart is achieved by fading out unselected stages.
 %events - stages is automatically done by gest
 The mapping between events in the Atomic chart and TDD stages in the Spectrum chart is intuitively achieved by the shared horizontal axis.
 
+The Atomic chart also shows current user focus by fading out events that are not selected.
 \section{Implementation}
 
 Our tool is written in javascript.
