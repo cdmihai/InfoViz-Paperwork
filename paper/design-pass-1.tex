@@ -294,7 +294,7 @@ Data is gathered by a plugin that is installed by the user in her IDE. The plugi
 
 \subsection{Overview}
 
-For this design iteration we only focus on the single developer scenario. Thus we do not tackle design solutions for user questions that involve managers or researchers.
+For the scope of this paper we only focus on the single developer scenario. Thus we do not tackle design solutions for user questions that involve managers or researchers.
 
 Our single user solution proposes the visualization of data at several abstraction levels, as \cite{two} suggests. Thus users have three scopes at which they can analyze their TDD practice, varying from concrete to abstract:
 
@@ -359,6 +359,12 @@ This integration provides both a tight mapping to granular events and an interme
 Since the Spectrum chart is both close to and aligned with the Atomic chart, the users would tend to instinctively visually group code changes by TDD stage (gestalt principle: instinctively continuing an interrupted interval).
 
 \begin{figure*}
+	\includegraphics[width=\textwidth]{fig3.png}
+	\caption{TDD Pulse Chart}
+	\label{fig:three}
+\end{figure*}
+
+\begin{figure*}
 	\includegraphics[width=\textwidth]{fig2.png}
 	\caption{TDD Spectrum Chart}
 	\label{fig:two}
@@ -386,12 +392,6 @@ The purpose of this visualization is to represent an entire TDD cycle by just on
 
 By doing so, users obtain a singular mental image of an entire TDD cycle.
 \cite{one} presents this technique as temporal data abstraction, in which complex, large temporal data is abstracted and mapped to qualitative entities, in our case, shape.
-
-\begin{figure*}
-	\includegraphics[width=\textwidth]{fig3.png}
-	\caption{TDD Pulse Chart}
-	\label{fig:three}
-\end{figure*}
 
 The visualization (figure~\ref{fig:three}) has its inspiration in the stacked hive plot.
 Each TDD stage in the cycle is represented by a section of a disc.
@@ -443,7 +443,7 @@ Its implementation relies on various libraries.
 The Pulse Chart is implemented in D3 \cite{three} and based on a Hive Chart \cite{four}.
 We used the JSDiff library \cite{five} for diffing the code between different text events.
 
-\begin{figure}[H]
+\begin{figure}
 	\includegraphics[width=\columnwidth]{implementation}
 	\caption{TDD Viewer Pipeline}
 	\label{fig:tool_pipeline}
