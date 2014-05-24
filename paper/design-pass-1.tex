@@ -154,6 +154,7 @@ Researchers analyzing the practice of TDD can use this to look for patterns in h
 Finally, managers analyzing the performance of those that they are managing can use this visualization to have an accurate picture of their team's performance.
 
 \section{High level domain question/questions of interest}
+\label{sec:highq}
 
 \textbf{Developers:} \\
 Q1: What does my TDD workflow look like? \\
@@ -366,6 +367,12 @@ By doing so we also ensure a common axis with the Atomic chart.
 
 The TDD stage type (categorical) is encoded via color: red for tests, green for development and blue for refactoring (colors are established by TDD literature). We chose color since position was taken by encoding temporal succession.
 
+
+
+Cycle membership (categorical) is encoded via shape: the beginning and ending stages of the same cycle have rounded corners.
+This makes the users intuitively split the stages by cycles since the rounded corners visually create partitions in the Spectrum chart.
+We chose not to use higher ranked encodings (connection, containment, density) in Mackinlay's ranking because the stages are represented in a visually compact style and any other extra markings would have over-cluttered the chart.
+
 \subsection{TDD Pulse Chart}
 \label{sec:pulse}
 
@@ -416,7 +423,10 @@ Moreover, there must be visual cues that show the user's current focus.
 %cycle to pulse (background select, scroll to pulse, select pulse, highlight cycle in pulse)
 Our tool provides bidirectional navigation between TDD cycles and stages.
 A selection of a TDD cycle in the Pulse chart causes an automatic selection of the corresponding stages in the Spectrum chart and a selection of a TDD stage in the Spectrum chart causes the automatic selection of its containing cycle in the Pulse chart.
+
 Both charts visually mark their selections to provide cues of the user's current focus.
+The selection in the Pulse chart is achieved by fading out unselected cycles and coloring the background of the selected one.
+The selection in the Spectrum chart is achieved by fading out unselected stages.
 
 %events - stages is automatically done by gest
 The mapping between events in the Atomic chart and TDD stages in the Spectrum chart is intuitively achieved by the shared horizontal axis.
@@ -448,12 +458,54 @@ A pulse contains a succession of red, green and blue stages.
 While the red and green stages are mandatory, the blue stage is optional.
 The TDD pulse is graphically represented by the Pulse Chart(section \ref{sec:pulse}).
 
-\section{Example scenario}
+\section{Usage scenarios}
+
+Based on figure~\ref{fig:one} users can perform the following activities:
+\begin{itemize}
+	\item Analyze the pulse chart to answer their questions about TDD (section \ref{sec:highq}). 
+	They can quickly detect any recurrent patterns, investigate how much code  they write in each phase (or how much time is spent) and judge on how close they are following TDD practices.
+	
+	\item They can explore the code changes for a certain cycle or stage. 
+	Clicking on any item in the pulse chart the corresponding stages light up.
+	Clicking on any text change event shows the code before and after the change, and the diff as well.
+	
+	\item Better define the TDD stages.
+	Users can select any TDD stage in the Spectrum chart and resize it, to better account for the events that make part of it.
+\end{itemize}
+
 \subsection{Insights}
+
+%Mackinlay's ordering does not always work. ex: cluttering
+We found out that upholding Mackinlay's ranking does not lead to optimal results in some cases.
+For example, our Spectrum chart has a compacted style and when encoding yet another piece of information (grouping stages by cycle) we had to skip several rankings (connection, containment) until we came to one that looked acceptable on our compact chart (area).
+
+%Designing for small things
+Designing for small sized charts brings a set of constraints to the design process.
+For example, our pulse charts needed to fit in a 100 x 100 pixel square.
+While we were trying different approaches, we observed that it was hard to discern small variations in data.
+Therefore we opted to use encodings for the pulse chart that amplify small variations.
+By encoding data in a disc section (defined by the radius), whenever the radius would change, the disc surface would change by a power of two, thus amplifying the small variation in the radius.
+
+%iterations are quite good, no new news here
+The iterative design process went very smooth for us.
+Making small steps allowed us to avoid getting stuck.
+For example, with the Pulse chart we went through about 4 or 5 variants until we settled on the petal like approach.
+
+%the importance of preffering intuitive pre attentive cues rather than resorting to complex mental operations (tying by number, etc)
 
 \section{Problems}
 
+%fake data
+
+%not clean
+
+%lots of events
+
 \section{Future work}
+
+%compare with others
+
+%selective events
  
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{}
