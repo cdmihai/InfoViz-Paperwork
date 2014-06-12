@@ -136,16 +136,16 @@
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
 
-Software processes have had little or no visualization aids.
-Without this kind of information, it is hard to grasp whether these processes are followed correctly. It is hard to find anomalies, and identify potential areas for improvement. Without visualizations that show the big picture, one has to go through tedious, time consuming and incomplete data to learn how a processes was actually implemented. One has to go through reports, interviews and mine software artefacts in order to gain a big picture understanding on how a particular team implemented a software process.
+Software development processes have had little or no visualization aids.
+Without data describing the development process, it is very difficult to grasp whether these processes are followed correctly or not. It is hard to find anomalies, and identify potential areas for improvement. Without visualizations that show the entire process, one has to go through tedious, time consuming and incomplete data to learn how a processes was actually implemented. One has to go through reports, interviews and mine software artifacts in order to gain a big picture understanding on how a particular team implemented a software process.
 
-We intend to build visualizations that aid in analyzing developers' TDD practice. Such visualizations would visually expose, for each developer, the main stages of the practice and how they evolve over time.
+We have built a visualization that aids in analyzing developers' TDD practice. This visualization visually exposes, for each developer, the main stages of the practice and how they evolve over time.
 
-This kind of information benefits developers, managers and researchers. Developers can better improve their practice by analyzing their past behaviour. Managers can get a sense of magnitude of how well TDD is implemented in the team. Researchers can gain insights and better describe the theoretical foundations of TDD by finding patterns and exploring the divide between practical and theoretical TDD.
+This kind of information benefits developers, managers and researchers. Developers can better improve their practice by analyzing their past behaviour. Managers can get a sense of how well TDD is implemented in their team. Researchers can gain insights and better describe the theoretical foundations of TDD by finding patterns and exploring the divide between practical and theoretical TDD.
 
 \section{Target Audience/User}
 
-The target audience for this visualization is anyone who wants to know about how the software development process happened.  
+The target audience for this visualization is anyone who wants to know how the software development process happened.  
 
 Developers who want to analyze their own TDD cycle can use this visualization to examine their performance and look for ways to improve their practice.
 
@@ -166,7 +166,7 @@ Q1: How consistent are my developers in using TDD? \\
 Q2: Who are the best TDD performers? \\
 
 \textbf{Researchers:} \\
-Q1: What does a practica l TDD workflow look like? \\
+Q1: What does a practical TDD workflow look like? \\
 Q2: How does practical TDD differ from theoretical TDD? \\
 
 \section{Detailed questions that users may ask of the data}
@@ -294,7 +294,7 @@ Data is gathered by a plugin that is installed by the user in her IDE. The plugi
 
 \subsection{Overview}
 
-For the scope of this paper we only focus on the single developer scenario. Thus we do not tackle design solutions for user questions that involve managers or researchers.
+For the scope of this paper we only focus on the single developer scenario. Thus we do not tackle design solutions for user questions that involve managers or researchers.  However, we think that the visualization that we describe could answer many of the questions that they have.
 
 Our single user solution proposes the visualization of data at several abstraction levels, as \cite{two} suggests. Thus users have three scopes at which they can analyze their TDD practice, varying from concrete to abstract:
 
@@ -313,7 +313,7 @@ The top bar contains the high level, abstract visualization of TDD cycles via th
 \label{fig:one}
 \end{figure*}
 
-The bottom bar shows the granular code changes via the TDD Atomic chart. It is also a navigational tool that users use to browse through events and view code diffs.
+The bottom bar shows the granular code changes via the TDD Atomic chart. It is also a navigational tool that users can use to browse through events and view code diffs.
 The mapping from the granular code changes to TDD stages is present via the top band which constitutes the TDD Spectrum chart.
 
 In the middle there are three editors that show the code changes between two arbitrary text events in the TDD Atomic Chart. The first two editors show the first and the last variant of the code while the third editor shows the diff between the two: green highlights for added text and red highlights for deleted text.
@@ -501,7 +501,7 @@ For example, with the Pulse chart we went through about 4 or 5 variants until we
 \section{Problems}
 
 %lots of events
-One of the problems that we faced (and still face) is the large volume of data that we have to deal with because our data includes many development events (each keystroke, eacy copy paste, each test, each lunch etc) we are.
+One of the problems that we faced (and still face) is the large volume of data that we have to deal with because our data includes many development events (each keystroke, every copy paste, each test, each launch etc).
 We alleviated this issue by grouping the events by source file, adopting the soundwave metaphor and shrinking intermediary text changes.
 
 %fake data
@@ -523,7 +523,7 @@ Another approach would be to show only the events pertaining to a cycle, when a 
 
 %automatic detection of 
 Currently users have to manually define the TDD stages.
-We would design an algorithm that automatically bins detects TDD stages.
+We would like to design an algorithm that automatically detects TDD stages.
  
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{}
